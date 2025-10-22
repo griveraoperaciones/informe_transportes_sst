@@ -1,90 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
 
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>REMISIÓN</title>
-		<link rel="stylesheet" href="https://fredyortegon30.github.io/invoice/style.css">
-		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-	</head>
-	<body>
-		<header>
-			<h1>REMISIÓN</h1>
-			<address>
-				<p>MI EMPRESA</p>
-				<p>NIT 1111111111<br>Calle 11- 10-33</p>
-				<p>Pereira</p>
-			</address>
-
-<div style="float: right;">
-    <img alt="" src="https://acortar.link/caSNRS" style="width: 100px; height: 100px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-</div>
+<head>
+  <meta charset="utf-8" />
+  <title>Inspección de Movilidades – Transporte de Personal</title>
 
 
-		</header>
-		<article>
-			<h1>Recipient</h1>
-			<address>
-				<p>&lt;&lt;[id_cliente].[Nombre_cliente]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Email: &lt;&lt;[id_cliente].[Email]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[id_cliente].[Celular]&gt;&gt;</p>
-			</address>
-			<table class="meta">
-				<tr>
-					<th><span>Remisión #</span></th>
-					<td><span>&lt;&lt;[N_factura]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Fecha</span></th>
-					<td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-			<table class="inventory">
-				<thead>
-					<tr>
-						<th><span>Producto</span></th>
-						<th><span>Descripcion</span></th>
-						<th><span>Valor ud</span></th>
-						<th><span>Cantidad</span></th>
-						<th><span>Subtotal</span></th>
-					</tr>
-				</thead>
-				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(DETALLE_VENTAS[id_detalle],[id_encabezado_venta]=[id_encabezado]) &gt;&gt;</span></p>
-					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[id_producto].[Nombre de producto]&gt;&gt;</td>
-						<td><span></span></td>
-				        <td><span>&lt;&lt;[Valor_unitario]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
-					</tr>
-				<p><span>&lt;&lt; end &gt;&gt;</span></p>
-				</tbody>
-			</table>
-			<a class="add">+</a>
-			<table class="balance">
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Otros conceptos</span></th>
-					<td><span data-prefix="$"></span><span>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-		</article>
-		<aside>
-			<h1><span>Notas adicionales</span></h1>
-			<div>
-				<p>Pagos a la cuenta de ahorros bancolombia # </p>
-			</div>
-		</aside>
-	</body>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+         
+        
+        <div class="subtitle">🛡️ GRS · SST · Sistema de Inspecciones</div>
+      
+        <h1>Inspección de Movilidades – Transporte de Personal</h1>
+ 
+        <table class="meta-container" cellspacing="8">
+          
+          <tr class="meta-row">
+            <td class="meta-tag">
+              
+              <span class="label">📋 CÓDIGO</span>
+              <span class="value">
+                <<[CODIGO]>>
+              </span>
+            </td>
+            <td class="meta-tag">
+              <span class="label">📌 VERSIÓN</span>
+              <span class="value">
+                <<[VERSION]>>
+              </span>
+            </td>
+            <td class="meta-tag">
+              <span class="label">📄 FOLIO</span>
+              <span class="value">
+                <<[FOLIO]>>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Información General -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">📊</span>
+            <h2 class="card-title">Información General</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Resumen</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="grid-table">
+        <tr>
+          <td>
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th>Registro</th>
+                  <td>
+                    <<[REGISTRO]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Estado</th>
+                  <td>
+                    <<[ESTADO]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Fecha Inspección</th>
+                  <td>
+                    <<[FECHA DE INSPECCION]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Hora Inspección</th>
+                  <td>
+                    <<[HORA DE INSPECCION]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Inspector</th>
+                  <td>
+                    <<[INSPECCIONADO POR]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Lugar</th>
+                  <td>
+                    <<[LUGAR DE INSPECCION]>>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th>FECHA PROGRAMADA</th>
+                  <td>
+                    <<[FECHA Y HORA PROGRAMADA]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Reprogramada</th>
+                  <td>
+                    <<[FECHA Y HORA REPROGRAMADA]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Motivo Reprog.</th>
+                  <td>
+                    <<[MOTIVO REPROGRAMACION]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Inicio Real</th>
+                  <td>
+                    <<[INICIO REAL]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Fin Real</th>
+                  <td>
+                    <<[FIN REAL]>>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Fecha Subsanación.</th>
+                  <td>
+                    <<[FECHA DE LEVANTAMIENTO]>>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Vehículo y Conductor -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">🚐</span>
+            <h2 class="card-title">Datos del Vehículo y Conductor</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Identificación</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="grid-table">
+        <tr>
+          <td>
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th>Empresa Transporte</th>
+                  <td>
+                    <<[EMPRESA DE TRANSPORTE]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Placa</th>
+                  <td><span class="highlight-value">
+                      <<[PLACA]>>
+                    </span></td>
+                </tr>
+                <tr>
+                  <th>Año Fabricación</th>
+                  <td>
+                    <<[FABRICACION]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Granja/Proceso</th>
+                  <td>
+                    <<[GRANJA O PROCESO QUE TRANSPORTA]>>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th>Nombre Conductor</th>
+                  <td>
+                    <<[NOMBRE DEL CONDUCTOR]>>
+                  </td>
+                </tr>
+                <tr>
+                  <th>DNI</th>
+                  <td><span class="highlight-value">
+                      <<[DNI]>>
+                    </span></td>
+                </tr>
+                <tr>
+                  <th>Categoría Licencia</th>
+                  <td>
+                    <<[CATEGORIA DE LICENCIA DE CONDUCIR]>>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Documentación -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">📄</span>
+            <h2 class="card-title">Documentación Vigente</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Verificación</span>
+          </div>
+
+        </div>
+      </div>
+
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th>Documento</th>
+            <th>Resultado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🔒 SOAT Vigente</td>
+            <td>
+              <<[SOAT VIGENTE]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 1]>>
+            </td>
+          </tr>
+          <tr>
+            <td>📋 Revisión Técnica Vigente</td>
+            <td>
+              <<[REVISION TECNICA VIGENTE]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 2]>>
+            </td>
+          </tr>
+          <tr>
+          <tr>
+            <td>🪪 DNI </td>
+            <td>
+              <<[CATEGORIA DE LICENCIA DE CONDUCIR2]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 3]>>
+            </td>
+          </tr>
+          <tr>
+          <tr>
+            <td>✅ Licencia corresponde al tipo de vehículo</td>
+            <td>
+              <<[CATEGORIA DE LICENCIA DE CONDUCIR2]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 4]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Equipamiento -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">🛠️</span>
+            <h2 class="card-title">Equipamiento y Seguridad</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Inspección</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Resultado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🔐 Cinturones de Seguridad</td>
+            <td>
+              <<[CINTURONES DE SEGURIDAD]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 5]>>
+            </td>
+          </tr>
+          <tr>
+            <td>⚠️ Conos de Seguridad</td>
+            <td>
+              <<[CONOS DE SEGURIDAD]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 6]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🏥 Botiquín</td>
+            <td>
+              <<[BOTIQUIN]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 7]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🚪 Puertas/Ventanas/Asientos</td>
+            <td>
+              <<[PUERTAS, VENTANAS Y ASIENTOS EN BUENAS CONDICIONES]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 8]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🔧 Herramientas Básicas</td>
+            <td>
+              <<[HERRAMIENTAS BASICAS DE LA UNIDAD]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 9]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🧯 Extintor (Operativo)</td>
+            <td>
+              <<[EXTINTOR - TARJETA DE INSPECCION (OPERATIVO)]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 10]>>
+            </td>
+          </tr>
+          <tr>
+            <td>📢 Claxon</td>
+            <td>
+              <<[CLAXON]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 18]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🔊 Bocina de Retroceso</td>
+            <td>
+              <<[BOCINA DE RETRO]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 19]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🛞 Estado de Llantas</td>
+            <td>
+              <<[ESTADO DE LLANTAS (COCADA)]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 16]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🛞 Llanta de Repuesto</td>
+            <td>
+              <<[LANTA DE REPUESTO]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 17]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Iluminación -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">💡</span>
+            <h2 class="card-title">Sistema de Iluminación</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Luces</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Resultado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>↖️ Direccional Delantera Izq.</td>
+            <td>
+              <<[LUZ DIRECCIONAL DELANTERA IZQUIERDA]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 11]>>
+            </td>
+          </tr>
+          <tr>
+            <td>↗️ Direccional Delantera Der.</td>
+            <td>
+              <<[LUIZ DIRECCIONAL DELANTERA DERECHA]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 12]>>
+            </td>
+          </tr>
+          <tr>
+            <td>↙️ Direccional Posterior Izq.</td>
+            <td>
+              <<[LUZ DIRECCIONAL POSTERIOR IZQUIERDA]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 13]>>
+            </td>
+          </tr>
+          <tr>
+            <td>↘️ Direccional Posterior Der.</td>
+            <td>
+              <<[LUZ DIRECCIONAL POSTERIOR DERECHA]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 14]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🚨 Luces de Emergencia</td>
+            <td>
+              <<[LUCES DE EMERGENCIA]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 15]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Limpieza e Higiene -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">🧹</span>
+            <h2 class="card-title">Limpieza e Higiene</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Condiciones</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th>Área</th>
+            <th>Resultado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🦶 Pisos</td>
+            <td>
+              <<[PISOS LIMPIOS]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 20]>>
+            </td>
+          </tr>
+          <tr>
+            <td>💺 Asientos</td>
+            <td>
+              <<[ASIENTOS LIMPIOS]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 21]>>
+            </td>
+          </tr>
+          <tr>
+            <td>🪟 Ventanas y Cortinas</td>
+            <td>
+              <<[VENTANAS Y CORTINAS LIMPIAS]>>
+            </td>
+            <td>
+              <<[OBSERVACIONES 22]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Resultado de la Inspección -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">✅</span>
+            <h2 class="card-title">Resultado de la Inspección</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Evaluación</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <th>Resultado Final</th>
+            <td>
+              <<[RESULTADO]>>
+            </td>
+          </tr>
+          <tr>
+            <th>Observación Final</th>
+            <td>
+              <<[OBSERVACION FINAL]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Firmas -->
+      <div class="evidence-footer">
+        <h3>📝 Validación y Firmas</h3>
+        <table class="signature-table">
+          <tr>
+            <td>
+              <div class="signature-item">
+                <span class="signature-icon">✍️</span>
+                <span class="signature-label">Firma Conductor</span>
+                <span class="signature-value">
+                  <<[NOMBRE Y APELLIDO DEL CONDUCTOR]>>
+                </span>
+                <div style="margin-top: 8px; font-size: 12px; color: #64748b;">
+                  <<[FIRMA DEL CONDUCTOR]>>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="signature-item">
+                <span class="signature-icon">✍️</span>
+                <span class="signature-label">Firma Inspector</span>
+                <span class="signature-value">
+                  <<[NOMBRES Y APELLIDOS DEL INSPECCIONADOR]>>
+                </span>
+                <div style="margin-top: 8px; font-size: 12px; color: #64748b;">
+                  <<[FIRMA]>>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="signature-item">
+                <span class="signature-icon">🛡️</span>
+                <span class="signature-label">Sello de Garita</span>
+                <span class="signature-value">
+                  <<[SELLO DE GARITA]>>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Evidencias y Notificaciones -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-flex">
+          <div class="card-header-left">
+            <span class="card-icon">📸</span>
+            <h2 class="card-title">Evidencias y Notificaciones</h2>
+          </div>
+          <div class="card-header-right">
+            <span class="card-badge">Documentación</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <th>📷 Evidencia 1</th>
+            <td>
+              <<[EVIDENCIAS 1]>>
+            </td>
+          </tr>
+          <tr>
+            <th>📷 Evidencia 2</th>
+            <td>
+              <<[EVIDENCIAS 2]>>
+            </td>
+          </tr>
+          <tr>
+            <th>📧 Correo Proveedor</th>
+            <td>
+              <<[CORREO PROVEEDOR]>>
+            </td>
+          </tr>
+          <tr>
+            <th>📧 Correo Inspector</th>
+            <td>
+              <<[CORREO INSPECTOR]>>
+            </td>
+          </tr>
+          <tr>
+            <th>📬 CC 1</th>
+            <td>
+              <<[CORREO 1]>>
+            </td>
+          </tr>
+          <tr>
+            <th>📬 CC 2</th>
+            <td>
+              <<[CORREO 2]>>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer del documento -->
+    <div style="background: #f8fafc; padding: 20px 25px; text-align: center; border-top: 3px solid #0ea5e9;">
+      <p style="font-size: 12px; color: #64748b; margin: 0;">
+        📋 Documento generado por el Sistema de Inspecciones GRS · SST
+      </p>
+      <p style="font-size: 11px; color: #94a3b8; margin: 8px 0 0 0;">
+        Este documento es de uso interno y confidencial
+      </p>
+    </div>
+
+  </div>
+</body>
+
 </html>
